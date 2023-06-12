@@ -10,6 +10,7 @@ import {
   useMergeRefs,
 } from "@chakra-ui/react";
 import { forwardRef, useRef } from "react";
+import {HiEyeOff,  HiEye} from "react-icons/hi"
 
 export const PasswordField = forwardRef<HTMLInputElement, InputProps>(
   (props, ref) => {

@@ -3,7 +3,7 @@ import {
   Button,
   Checkbox,
   Container,
-  Divider,
+  // Divider,
   FormControl,
   FormLabel,
   Heading,
@@ -13,12 +13,15 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Logo } from "@/components/Logo";
-import { OAuthButtonGroup } from "@/components/OAuthButtonGroup";
+// import { OAuthButtonGroup } from "@/components/OAuthButtonGroup";
 import { PasswordField } from "@/components/PasswordField";
 
 export const Login = () => (
   <Container
-    bg="white"
+    pos="absolute"
+    top="120"
+    left="280"
+    bg="#ffc2c2"
     maxW="lg"
     py={{ base: "12", md: "24" }}
     px={{ base: "0", sm: "8" }}
@@ -41,7 +44,7 @@ export const Login = () => (
       <Box
         py={{ base: "0", sm: "8" }}
         px={{ base: "4", sm: "10" }}
-        bg={{ base: "transparent", sm: "bg.surface" }}
+        bg={{ base: "#ecd0d0", sm: "bg.surface" }}
         boxShadow={{ base: "none", sm: "md" }}
         borderRadius={{ base: "none", sm: "xl" }}
       >
@@ -55,20 +58,20 @@ export const Login = () => (
           </Stack>
           <HStack justify="space-between">
             <Checkbox defaultChecked>Remember me</Checkbox>
-            <Button variant="text" colorScheme="blue" size="sm">
+            {/* <Button variant="text" colorScheme="blue" size="sm">
               Forgot password?
-            </Button>
+            </Button> */}
           </HStack>
           <Stack spacing="6">
             <Button variant="primary">Sign in</Button>
             <HStack>
-              <Divider />
-              <Text fontSize="sm" whiteSpace="nowrap" color="fg.muted">
+              {/* <Divider /> */}
+              {/* <Text fontSize="sm" whiteSpace="nowrap" color="fg.muted">
                 or continue with
-              </Text>
-              <Divider />
+              </Text> */}
+              {/* <Divider /> */}
             </HStack>
-            <OAuthButtonGroup />
+            {/* <OAuthButtonGroup /> */}
           </Stack>
         </Stack>
       </Box>
