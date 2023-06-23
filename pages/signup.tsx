@@ -50,16 +50,18 @@ const SignUp = () => {
   // emailとpasswordの状態管理
   // useStateにReactが必要な理由？
   const [email, setEmail] = React.useState<string>("");
+  // const [password, setPassword] = React.useState<string | number>("");
   const [password, setPassword] = React.useState<string>("");
 
   const Register = (e: any) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        alert("Create successfully");
         console.log(userCredential);
       })
       .catch((error) => {
-        alert(error.message);
+        alert("Password should be at least 6 characters");
         console.log(error);
       });
   };
@@ -161,6 +163,7 @@ const SignUp = () => {
                   </Link>
                 </Grid>
                 <Grid item>
+                  {/* Sign Inページに遷移するようにする */}
                   <Link href="#" variant="body2">
                     {"Already have an account? Sign In"}
                   </Link>
