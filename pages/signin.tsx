@@ -12,6 +12,8 @@ import Grid from "@mui/material/Grid";
 // import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { auth } from "./firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 function Copyright(props: any) {
   return (
@@ -42,6 +44,31 @@ const SignIn = () => {
       email: data.get("email"),
       password: data.get("password"),
     });
+  };
+
+  const [email, setEmail] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
+
+  const Login = (e: any) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        alert("Login successfully");
+        console.log(userCredential);
+        // mainにLinkを使用して遷移させる
+      })
+      .catch((error) => {
+        alert("Email or Password is wrong");
+        console.log(error);
+      });
+  };
+
+  const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.currentTarget.value);
+  };
+
+  const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.currentTarget.value);
   };
 
   return (
@@ -96,6 +123,9 @@ const SignIn = () => {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  handleChangeEmail(e);
+                }}
               />
               <TextField
                 margin="normal"
@@ -106,6 +136,9 @@ const SignIn = () => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  handleChangePassword(e);
+                }}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -116,6 +149,7 @@ const SignIn = () => {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                onClick={Login}
               >
                 Sign In
               </Button>
