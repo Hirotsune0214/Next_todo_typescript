@@ -1,5 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
+import Header from "./Header";
+import Form from "./Form";
 
 export default function Add() {
   return (
@@ -15,7 +17,10 @@ export default function Add() {
           left: "25%",
           top: "9%",
         }}
-      />
+      >
+        <Header />
+        <Form />
+      </Box>
     </>
   );
 }

@@ -1,0 +1,18 @@
+.textForm {
+  width: 300px;
+  position: relative;
+  top: 50px;
+  left: 50px;
+}
+
+.sendButton {
+  width: 100px;
+  position: relative;
+  top: 60px;
+  left: 100px;
+  transition: 1s;
+}
+
+.sendButton:hover {
+  background-color: rgb(12, 122, 12);
+}
