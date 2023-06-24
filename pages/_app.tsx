@@ -1,19 +1,19 @@
 import "@/styles/globals.css";
-import { Box, ChakraProvider } from "@chakra-ui/react";
+import { Box } from "@mui/material";
 import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <ChakraProvider>
-        <Box
-          w="100%"
-          h="100vh"
-          bgImage="linear-gradient(to-br, #a551ff , #46e0e3f8)"
-        >
-          <Component {...pageProps} />
-        </Box>
-      </ChakraProvider>
+      <Box
+        sx={{
+          background: "linear-gradient(to right bottom, #a551ff , #46e0e3f8)",
+          width: "100%",
+          height: "100vh",
+        }}
+      >
+        <Component {...pageProps} />
+      </Box>
     </>
   );
 }
