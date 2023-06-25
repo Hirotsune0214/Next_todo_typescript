@@ -17,8 +17,15 @@ import {
 } from "firebase/firestore";
 import { timeStamp } from "console";
 
+type TodoListType = {
+  id: string;
+  text: string;
+  timestamp: any;
+};
 const Form: React.FC = () => {
-  const [todo, setTodo] = useState([]);
+  const [todo, setTodo] = useState<TodoListType[]>([
+    { id: "", text: "", timestamp: null },
+  ]);
   const [inputText, setInputText] = useState("");
 
   const submitAdd = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -39,7 +46,6 @@ const Form: React.FC = () => {
     setInputText(e.target.value);
   };
 
-  /*
   useEffect(() => {
     const q = query(collection(db, "todo"), orderBy("timestamp", "desc"));
 
@@ -48,13 +54,13 @@ const Form: React.FC = () => {
         snapshot.docs.map((doc) => ({
           id: doc.id,
           text: doc.data().text,
-          timeStamp: doc.data().timeStamp,
+          timestamp: doc.data().timeStamp,
         }))
       );
     });
+    console.log(unSubscribe());
     return () => unSubscribe();
   }, []);
-  */
 
   useEffect(() => {});
 
