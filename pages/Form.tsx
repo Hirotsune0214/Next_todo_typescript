@@ -2,6 +2,8 @@ import { Button, TextField } from "@mui/material";
 import React, { use, useEffect, useState } from "react";
 import styles from "./Form.module.css";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 // Firebase
 import { db } from "./firebase";
@@ -13,6 +15,7 @@ import {
   query,
   orderBy,
   getDocs,
+  doc,
 } from "firebase/firestore";
 import { timeStamp } from "console";
 
@@ -72,7 +75,7 @@ const Form: React.FC = () => {
 
   return (
     <>
-      // onSubmit = formタグにつけて、送信前の内容のチェックや確認に使用する
+      {/*  onSubmit = formタグにつけて、送信前の内容のチェックや確認に使用する */}
       <form onSubmit={submitAdd}>
         <TextField
           className={styles.textForm}
@@ -89,6 +92,22 @@ const Form: React.FC = () => {
           Send
         </Button>
       </form>
+
+      <div className="todoList">
+        {todo.map((task) => (
+          <div className="todo">
+            <div className="todoText">
+              <span>{task.text}</span>
+            </div>
+          </div>
+        ))}
+        <button>
+          <DeleteIcon />
+        </button>
+        <button>
+          <EditIcon />
+        </button>
+      </div>
     </>
   );
 };
