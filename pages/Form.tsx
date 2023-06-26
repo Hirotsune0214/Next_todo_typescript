@@ -12,7 +12,6 @@ import {
   serverTimestamp,
   query,
   orderBy,
-  onSnapshot,
   getDocs,
 } from "firebase/firestore";
 import { timeStamp } from "console";
