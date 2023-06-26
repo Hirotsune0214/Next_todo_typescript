@@ -21,10 +21,11 @@ type TodoListType = {
   id: string;
   text: string;
   timestamp: any;
+  completed: boolean;
 };
 const Form: React.FC = () => {
   const [todo, setTodo] = useState<TodoListType[]>([
-    { id: "", text: "", timestamp: null },
+    { id: "", text: "", timestamp: null, completed: false },
   ]);
   const [inputText, setInputText] = useState("");
 
@@ -49,20 +50,26 @@ const Form: React.FC = () => {
   useEffect(() => {
     const q = query(collection(db, "todo"), orderBy("timestamp", "desc"));
 
-    const unSubscribe = onSnapshot(q, async (snapshot) => {
-      setTodo(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          text: doc.data().text,
-          timestamp: doc.data().timeStamp,
-        }))
-      );
-    });
-    console.log(unSubscribe());
-    return () => unSubscribe();
-  }, []);
+    (async () => {
+      const querySnapshot = await getDocs(collection(db, "todo"));
+      // データの取得はできている
+      // console.log(querySnapshot);
 
-  useEffect(() => {});
+      let array: TodoListType[] = [];
+      querySnapshot.forEach((doc) => {
+        return array.push({
+          ...doc.data(),
+          id: doc.id,
+          text: "",
+          timestamp: undefined,
+          completed: false,
+        });
+      });
+      // データの取得はできている
+      // console.log(array);
+      setTodo(array);
+    })();
+  }, []);
 
   return (
     <>
