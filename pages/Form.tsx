@@ -4,7 +4,7 @@ import styles from "./Form.module.css";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+// import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 // Firebase
 import { db } from "./firebase";
@@ -16,9 +16,7 @@ import {
   query,
   orderBy,
   getDocs,
-  doc,
 } from "firebase/firestore";
-import { timeStamp } from "console";
 
 type TodoListType = {
   id: string;
@@ -62,14 +60,10 @@ const Form: React.FC = () => {
       querySnapshot.forEach((doc) => {
         return array.push({
           ...doc.data(),
-          id: doc.id,
-          text: "",
-          timestamp: undefined,
-          completed: false,
         });
       });
-      // データの取得はできている
-      // console.log(array);
+      // データの取得はできているがtextが空白になっている
+      console.log(array);
       setTodo(array);
     })();
   }, []);
@@ -102,23 +96,30 @@ const Form: React.FC = () => {
         </Button>
       </form>
 
-      <div className="todoList">
-        {todo.map((task) => (
-          <div className="todo">
-            <div className="todoText">
-              <span>{task.text}</span>
-            </div>
-          </div>
+      <ul className={styles.allTodos}>
+        {todo.map((t) => (
+          <li className={styles.singleTodo}>
+            <span className={styles.todoText} key={t.id}>
+              {t.text}
+            </span>
+            <button>
+              <DeleteIcon />
+            </button>
+            <button>
+              <EditIcon />
+            </button>
+          </li>
         ))}
-        <button>
-          <DeleteIcon />
-        </button>
-        <button>
-          <EditIcon />
-        </button>
-      </div>
+      </ul>
     </>
   );
 };
 
 export default Form;
+
+/*
+id: doc.id,
+          text: "",
+          timestamp: undefined,
+          completed: false,
+*/

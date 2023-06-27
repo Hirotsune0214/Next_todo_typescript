@@ -16,3 +16,7 @@
 .sendButton:hover {
   background-color: rgb(12, 122, 12);
 }
+
+.allTodos {
+  color: black;
+}
