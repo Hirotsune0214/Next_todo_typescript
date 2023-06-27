@@ -4,6 +4,7 @@ import styles from "./Form.module.css";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 // Firebase
 import { db } from "./firebase";
@@ -83,6 +84,14 @@ const Form: React.FC = () => {
           type="text"
           onChange={handleChangeInput}
         />
+        {/* 
+        TODO: エラーは出るが、formにkeyをつけないといけないと解決しない？？
+        <AddCircleOutlineIcon
+          type="submit"
+          className={styles.sendButton}
+          variant="contained"
+        /> */}
+
         <Button
           type="submit"
           className={styles.sendButton}

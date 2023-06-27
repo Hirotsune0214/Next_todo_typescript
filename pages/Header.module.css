@@ -5,3 +5,21 @@
   position: relative;
   top: 25px;
 }
+
+.headerIcon {
+  position: absolute;
+  left: 550px;
+  /* TODO: 高さの調整を行う */
+}
+/*
+materialの共通クラスが効かない
+.MuiSvgIcon-root {
+  color: black;
+}
+*/
+
+.headerLetter {
+  color: black;
+  font-size: large;
+  font-weight: bold;
+}

@@ -10,7 +10,7 @@ export default function Add() {
         sx={{
           width: 650,
           height: 610,
-          backgroundColor: "#ffffff",
+          backgroundColor: "#bb9a9a",
           border: "solid 5px #faf0b6",
           borderRadius: "5%",
           position: "absolute",
