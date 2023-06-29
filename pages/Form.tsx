@@ -12,23 +12,27 @@ import { db } from "./firebase";
 import {
   collection,
   addDoc,
-  serverTimestamp,
   query,
   orderBy,
   getDocs,
+  deleteDoc,
+  doc,
+  updateDoc,
+  Timestamp,
+  serverTimestamp,
 } from "firebase/firestore";
+import { async } from "@firebase/util";
 
 type TodoListType = {
   id: string;
   text: string;
-  timestamp: any;
+  timestamp: Timestamp;
   completed: boolean;
 };
 const Form: React.FC = () => {
-  const [todo, setTodo] = useState<TodoListType[]>([
-    { id: "", text: "", timestamp: null, completed: false },
-  ]);
-  const [inputText, setInputText] = useState("");
+  const [todo, setTodo] = useState<TodoListType[]>([]);
+  // { id: "", text: "", timestamp: Timestamp, completed: false },
+  const [inputText, setInputText] = useState<string>("");
 
   const submitAdd = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,7 +43,7 @@ const Form: React.FC = () => {
     await addDoc(collection(db, "todo"), {
       text: inputText,
       completed: false,
-      timeStamp: serverTimestamp(),
+      timestamp: serverTimestamp(),
     });
     setInputText("");
   };
@@ -98,14 +102,12 @@ const Form: React.FC = () => {
 
       <ul className={styles.allTodos}>
         {todo.map((t) => (
-          <li className={styles.singleTodo}>
-            <span className={styles.todoText} key={t.id}>
-              {t.text}
-            </span>
-            <button>
+          <li className={styles.singleTodo} key={t.id}>
+            <span className={styles.todoText}>{t.text}</span>
+            <button onClick={() => deleteTodo(t)}>
               <DeleteIcon />
             </button>
-            <button>
+            <button onChange={() => editTodo(t)}>
               <EditIcon />
             </button>
           </li>

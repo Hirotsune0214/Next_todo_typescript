@@ -2,6 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Header from "./Header";
 import Form from "./Form";
+import Content from "./Content";
 
 export default function Add() {
   return (
@@ -20,6 +21,7 @@ export default function Add() {
       >
         <Header />
         <Form />
+        <Content />
       </Box>
     </>
   );

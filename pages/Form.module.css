@@ -3,6 +3,9 @@
   position: relative;
   top: 50px;
   left: 50px;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 .sendButton {
@@ -19,4 +22,16 @@
 
 .allTodos {
   color: black;
+  position: fixed;
+  /* TODO: 位置を修正しないといけない */
+  bottom: 1px;
+}
+
+.singleTodo {
+  padding-bottom: 50px;
+  font-size: 20px;
+}
+
+.allTodos button {
+  margin-left: 10px;
 }

@@ -40,8 +40,9 @@ const firebaseConfig = {
   appId: "1:855164816793:web:8572a437f1d7ba61f61708",
 };
 
-// Initialize Firebase
+// Firebaseアプリを初期化
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+// Firestoreを取得
 export const db = getFirestore(app);
 export default app;
